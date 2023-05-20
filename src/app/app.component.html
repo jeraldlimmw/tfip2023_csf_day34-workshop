@@ -1,0 +1,19 @@
+<h1>TELL ME A JOKE!</h1>
+
+<div *ngIf="resp$ | async as r">
+  <code>Joke number {{ r }}</code>
+</div>
+<br>
+<div *ngIf="prom$ | async as p else noJokeYet">
+  <tr>{{ p.setup }}</tr>
+  <tr>...</tr>
+  <tr>{{ p.punchline }}</tr>
+</div>
+<br>
+<div>
+  <button type="submit" (click)="getJokeIdAsObservable()" (click)="getJokeAsPromise()">Get a joke</button>
+</div>
+
+<ng-template #noJokeYet>
+  <h2>Hahaha... Please click on 'Get a joke' to receive a joke</h2>
+</ng-template>
